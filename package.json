@@ -9,7 +9,7 @@
     "bin": "bin"
   },
   "bin": {
-    "tmon": "./bin/livemon.js"
+    "livemon": "./bin/livemon.js"
   },
   "repository": {
     "type": "git",
@@ -36,5 +36,8 @@
   "devDependencies": {
     "eslint": "^8.46.0",
     "prettier": "^3.0.1"
+  },
+  "dependencies": {
+    "ezwatch": "0.0.3"
   }
 }
