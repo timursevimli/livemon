@@ -22,9 +22,11 @@ module.exports = (file, options = {}) => {
   };
   let child = spawn(exec, [...params, file], spawnOptions);
   return () => {
-    setTimeout(() => {
-      child.kill();
-      child = spawn(exec, [...params, file], spawnOptions);
-    }, delay);
+    child.kill();
+    child.on('exit', () => {
+      setTimeout(() => {
+        child = spawn(exec, [...params, file], spawnOptions);
+      }, delay);
+    });
   };
 };
