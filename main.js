@@ -16,17 +16,11 @@ const boot = async () => {
   }
   await beforeExec(config);
   const dir = process.cwd();
-  const options = { ignore: { ...config.ignore } };
-  console.log(options);
+  const options = { ignore: { ...config.ignore }, timeout: config.delay };
   const watcher = new Watcher(options).watch(dir);
-  console.log({ ignored: watcher });
   const filePath = path.join(dir, file);
   const restart = spawn(filePath, config);
-  watcher.on('change', () => {
-    restart();
-  });
+  watcher.on('change', () => void restart());
 };
-
-boot();
 
 module.exports = boot;
