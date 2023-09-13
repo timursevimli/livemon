@@ -1,6 +1,6 @@
 {
   "name": "livemon",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "Watch and restart in tracks changes",
   "author": "Timur Sevimli <svmlitimur@gmail.com>",
   "main": "./bin/livemon.js",
