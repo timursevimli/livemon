@@ -38,6 +38,6 @@
     "prettier": "^3.0.1"
   },
   "dependencies": {
-    "ezwatch": "0.0.4"
+    "ezwatch": "0.0.5"
   }
 }
