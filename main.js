@@ -19,7 +19,7 @@ const main = async (pathName) => {
   const options = { ignore: { ...config.ignore }, timeout: config.delay };
   const watcher = new Watcher(options).watch(pathName);
   const restart = spawn(filePath, config);
-  watcher.on('change', () => void restart());
+  watcher.on('*', () => void restart());
 };
 
 module.exports = main;
