@@ -3,8 +3,8 @@
 const path = require('node:path');
 const fsp = require('node:fs/promises');
 const Watcher = require('ezwatch');
-const { spawn, beforeExec } = require('./lib');
-const load = require('./lib/config/load.js');
+const { spawn, before } = require('./src');
+const load = require('./src/config/load.js');
 
 const main = async (pathName) => {
   const [fileName] = process.argv.slice(2);
@@ -15,7 +15,7 @@ const main = async (pathName) => {
   const filePath = path.join(pathName, fileName);
   await fsp.access(filePath);
   const config = await load(pathName);
-  await beforeExec(config);
+  await before(config);
   const options = { ignore: { ...config.ignore }, timeout: config.delay };
   const watcher = new Watcher(options).watch(pathName);
   const restart = spawn(filePath, config);
