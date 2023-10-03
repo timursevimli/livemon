@@ -2,7 +2,7 @@
 
 const { exec, execSync } = require('node:child_process');
 
-const beforeExec = async (options) => {
+const before = async (options) => {
   const { commands, stdio, exitOnError } = options.before;
   if (commands.length === 0) return;
   for (const command of commands) {
@@ -33,4 +33,4 @@ const beforeExec = async (options) => {
   }
 };
 
-module.exports = { beforeExec };
+module.exports = { before };
